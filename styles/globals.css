@@ -14,3 +14,24 @@ a {
 * {
   box-sizing: border-box;
 }
+
+:root {
+  
+  /* Square Colors:  background colors for the squares.*/
+  /* TODO: Incorporate these with enums */
+  --color-0: #eaeaea;
+  --color-1: #ff6600;
+  --color-2: #eec900;
+  --color-3: #0000ff;
+  --color-4: #cc00ff;
+  --color-5: #00ff00;
+  --color-6: #66ccff;
+  --color-7: #ff0000;
+
+  /* Numbers define values that will be used throughout the CSS.
+  --tile-size: 20px for example will set size of the grid squares. */
+  --cols: 10;
+  --rows: 18;
+  --tile-size: 30px;
+  --border-width: 5px;
+}

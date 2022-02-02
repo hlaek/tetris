@@ -1,0 +1,48 @@
+import Head from 'next/head'
+import Image from 'next/image'
+import styles from '../styles/Home.module.scss'
+import Block, { BlockColor } from '../components/block/block'
+import React from 'react'
+
+// Represents a 10 x 18 grid of grid squares
+
+const GridBoard:React.FC = () => {
+
+  // generates an array of 18 rows, each containing 10 GridSquares.
+    const grid: any[] = [];
+
+    for (let row = 0; row < 18; row ++) {
+        grid.push([])
+        for (let col = 0; col < 10; col ++) {
+            grid[row].push(<Block key={`${col}${row}`} blockColor={BlockColor.white} noShadow />)
+        }
+    }
+
+
+  // The components generated in makeGrid are rendered in div.grid-board
+    return (
+        <div className={styles.gridBoard}>
+            {grid}
+        </div>
+    )
+}
+
+
+export default function Home() {
+
+  return (
+    <div className={styles.container}>
+      <Head>
+      </Head>
+      <header className={styles.header}>
+        <Block blockColor={BlockColor.green}></Block>
+        <h2>Tetris</h2>
+      </header>
+
+      <main className={styles.main}>
+        <GridBoard />
+      </main>
+
+    </div>
+  )
+}

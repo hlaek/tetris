@@ -1,0 +1,10 @@
+.block {
+    height: 30px;
+    width: 30px;
+    outline: 1px solid black;
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3); 
+
+    &.noShadow {
+        box-shadow: none;
+    }
+}
