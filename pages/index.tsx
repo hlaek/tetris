@@ -11,18 +11,36 @@ const GridBoard:React.FC = () => {
 
   // generates an array of 18 rows, each containing 10 GridSquares.
     const grid: any[] = [];
-
     for (let row = 0; row < 18; row ++) {
         grid.push([])
         for (let col = 0; col < 10; col ++) {
-            grid[row].push(<Block key={`${col}${row}`} blockColor={BlockColor.white} noShadow />)
+            grid[row].push(<Block key={`${col}${row}`} blockColor={BlockColor.white} gridBlocks />)
         }
     }
-
 
   // The components generated in makeGrid are rendered in div.grid-board
     return (
         <div className={styles.gridBoard}>
+            {grid}
+        </div>
+    )
+}
+
+// Represents a 6 x 10 grid of grid squares
+const NextBlockGridBoard:React.FC = () => {
+
+  // generates an array of 5 rows, each containing 10 GridSquares.
+    const grid: any[] = [];
+    for (let row = 0; row < 8; row ++) {
+        grid.push([])
+        for (let col = 0; col < 6; col ++) {
+            grid[row].push(<Block key={`${col}${row}`} blockColor={BlockColor.white} gridBlocks />)
+        }
+    }
+
+  // The components generated in makeGrid are rendered in div.grid-board
+    return (
+        <div className={styles.nextBlockGridBoard}>
             {grid}
         </div>
     )
@@ -44,6 +62,7 @@ export default function Home() {
         <GridBoard />
         <NextBlock />
       </main>
+      <NextBlockGridBoard/>
 
     </div>
   )

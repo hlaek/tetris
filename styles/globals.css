@@ -34,4 +34,6 @@ a {
   --rows: 18;
   --tile-size: 30px;
   --border-width: 5px;
+  --next-cols: 6;
+  --next-rows: 8;
 }

@@ -10,12 +10,20 @@
   justify-content: center;
 }
 
-.gridBoard {
+.gridBoard{
   display: grid;
   grid-template-columns: repeat(var(--cols), var(--tile-size));
   grid-gap: 0;
   align-self: flex-start;
 }
+
+ .nextBlockGridBoard {
+  display: grid;
+  grid-template-columns: repeat(var(--next-cols), var(--tile-size));
+  grid-gap: 0;
+  align-self: flex-start;
+}
+
 
 .footer {
   display: flex;

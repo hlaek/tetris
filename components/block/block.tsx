@@ -3,7 +3,7 @@ import styles from './block.module.scss'
 
 interface BlockProps {
     blockColor: BlockColor;
-    noShadow?: boolean;
+    gridBlocks?: boolean;
 }
 
 export enum BlockColor {
@@ -15,9 +15,9 @@ export enum BlockColor {
     white = 'white'
 }
 
-const Block = ({ blockColor, noShadow }: BlockProps) => {
+const Block = ({ blockColor, gridBlocks }: BlockProps) => {
     return (
-        <div className={`${styles.block} ${noShadow && styles.noShadow}`} style={{backgroundColor: `${blockColor}`}}></div>
+        <div className={`${styles.block} ${gridBlocks && styles.gridBlocks}`} style={{backgroundColor: `${blockColor}`}}></div>
     )
 }
 

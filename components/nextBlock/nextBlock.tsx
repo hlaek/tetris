@@ -1,19 +1,21 @@
 import React from 'react'
 import Block, { BlockColor } from '../block/block'
+import styles from './nextBlock.module.scss'
 
 // Draws the "next" block view showing the next block to drop
 const NextBlock = () => {
 
-    const box = [[0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,0]];
+    const box = [[0,0,0, 0]];
+
     // Map the block to the grid
     const grid = box.map((rowArray, row) => {
-        return rowArray.map((square, col) => {
+        return rowArray.map((col) => {
             return <Block key={`${row}${col}`} blockColor={BlockColor.pink}/>
         })
     })
 
     return (
-        <div className="nextBlock">
+        <div className={styles.nextBlock}>
             {grid}
         </div>
     )
