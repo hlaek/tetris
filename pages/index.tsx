@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 import Block, { BlockColor } from '../components/block/block'
+import NextBlock from '../components/nextBlock/nextBlock'
 import React from 'react'
 
 // Represents a 10 x 18 grid of grid squares
@@ -41,6 +42,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <GridBoard />
+        <NextBlock />
       </main>
 
     </div>
