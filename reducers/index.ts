@@ -1,9 +1,12 @@
-import { combineReducers } from 'redux'
-import gameReducer from './game-reducer'
+// import gameReducer from './reducers'
 
-// The state handled by `gameReducer` will be stored with the property name `game` on the Redux store.
-const reducers = combineReducers({
-  game: gameReducer
-})
+// // The state handled by `gameReducer` will be stored with the property name `game` on the Redux store.
+// const reducers = combineReducers({
+//   game: gameReducer
+// })
 
-export default reducers
+// const reducers = ({ state }, action) => ({
+//     game: gameReducer
+//   });
+
+// export default reducers
