@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.scss'
 import Block, { BlockColor } from '../components/block/block'
 import NextBlock from '../components/nextBlock/nextBlock'
 import React from 'react'
+import ScoreBoard from '../components/scoreBoard/scoreBoard'
 
 // Represents a 10 x 18 grid of grid squares
 
@@ -45,24 +46,26 @@ const NextBlockGridBoard:React.FC = () => {
     )
 }
 
-
 export default function Home() {
 
   return (
     <div className={styles.container}>
       <Head>
       </Head>
-      <header className={styles.header}>
-        <Block blockColor={BlockColor.green}></Block>
-        <h2>Tetris</h2>
+      <header className={styles.App_header}>
+        <Block blockColor={BlockColor.green} />
+        <h1 className={styles.App_title}>Tetris</h1>
       </header>
 
       <main className={styles.main}>
         <GridBoard />
         <NextBlock />
       </main>
-      <NextBlockGridBoard/>
 
+      <aside>
+        <NextBlockGridBoard />
+        <ScoreBoard />
+      </aside>
     </div>
   )
 }
