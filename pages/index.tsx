@@ -1,9 +1,13 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 import Block, { BlockColor } from '../components/block/block'
 import NextBlock from '../components/nextBlock/nextBlock'
-import React from 'react'
+import React, { useState } from 'react'
+import { AppContextWrapper } from '../context/state';
+
+const [state] = useState<string>('default')
+
+
 
 // Represents a 10 x 18 grid of grid squares
 
@@ -50,6 +54,8 @@ const NextBlockGridBoard:React.FC = () => {
 export default function Home() {
 
   return (
+      <AppContextWrapper>
+
     <div className={styles.container}>
       <Head>
       </Head>
@@ -65,5 +71,6 @@ export default function Home() {
       <NextBlockGridBoard/>
 
     </div>
+    </AppContextWrapper>
   )
 }
