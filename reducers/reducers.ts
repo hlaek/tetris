@@ -1,7 +1,7 @@
 import { ActionType } from "../actions";
 
-export const gameReducer = (state = {}, action) => {
-  switch (action.type) {
+export const gameReducer = (state = {}, action: ActionType) => {
+  switch (action) {
     case ActionType.ROTATE:
       return state;
 
