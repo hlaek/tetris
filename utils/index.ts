@@ -27,7 +27,7 @@ export const randomShape = () => {
 };
 
 // Define block shapes and their rotations as arrays.
-export const shapes = [
+export const shapes: [number, number, number, number][][][] = [
   // none
   [
     [
