@@ -8,4 +8,38 @@
         box-shadow: none;
         outline: 1px solid black;
     }
+
+    /* Colors */
+    &:global(.color-0) {
+        box-shadow: none;
+        outline: 1px solid black;
+    }
+    
+    &:global(.color-1) {
+        background-color: var(--color-1);
+    }
+    
+    &:global(.color-2) {
+        background-color: var(--color-2);
+    }
+    
+    &:global(.color-3) {
+        background-color: var(--color-3);
+    }
+    
+    &:global(.color-4) {
+        background-color: var(--color-4);
+    }
+    
+    &:global(.color-5) {
+        background-color: var(--color-5);
+    }
+    
+    &:global(.color-6 ) {
+        background-color: var(--color-6);
+    }
+    
+    &:global(.color-7) {
+        background-color: var(--color-7);
+    }
 }

@@ -39,7 +39,7 @@ const initialState: StateInterface = {
   gameOver: false,
 };
 
-const AppContext = createContext<{
+export const AppContext = createContext<{
   state: StateInterface;
   dispatch: React.Dispatch<any>;
 }>({
@@ -56,7 +56,3 @@ export const AppContextWrapper: React.FC = ({ children }) => {
     </AppContext.Provider>
   );
 };
-
-export function useAppContext() {
-  return useContext(AppContext);
-}

@@ -1,24 +1,12 @@
-import React from 'react';
-import styles from './block.module.scss'
+import React from "react";
+import styles from "./block.module.scss";
 
 interface BlockProps {
-    blockColor: BlockColor;
-    gridBlocks?: boolean;
+  color: number; //index of shape
 }
 
-export enum BlockColor {
-    purple = 'purple',
-    pink = 'pink', 
-    blue = 'blue', 
-    green = 'green', 
-    orange = 'orange', 
-    white = 'white'
-}
-
-const Block = ({ blockColor, gridBlocks }: BlockProps) => {
-    return (
-        <div className={`${styles.block} ${gridBlocks && styles.gridBlocks}`} style={{backgroundColor: `${blockColor}`}}></div>
-    )
-}
+const Block = ({ color }: BlockProps) => {
+  return <div className={`${styles.block} color-${color}`}></div>;
+};
 
 export default Block;
