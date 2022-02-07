@@ -9,6 +9,16 @@ export enum ActionType {
   RESTART = "RESTART",
 }
 
+export type Action =
+  | { type: ActionType.PAUSE }
+  | { type: ActionType.RESUME }
+  | { type: ActionType.MOVE_LEFT }
+  | { type: ActionType.MOVE_RIGHT }
+  | { type: ActionType.ROTATE }
+  | { type: ActionType.MOVE_DOWN }
+  | { type: ActionType.GAME_OVER }
+  | { type: ActionType.RESTART };
+
 export const moveRight = () => {
   return { type: ActionType.MOVE_RIGHT };
 };

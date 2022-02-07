@@ -1,12 +1,35 @@
-// import gameReducer from './reducers'
+import { ActionType, Action } from "../actions";
+import { StateInterface } from "../context/state";
 
-// // The state handled by `gameReducer` will be stored with the property name `game` on the Redux store.
-// const reducers = combineReducers({
-//   game: gameReducer
-// })
+export const gameReducer = (state: StateInterface, action: Action) => {
+  switch (action.type) {
+    case ActionType.ROTATE:
+      return state;
 
-// const reducers = ({ state }, action) => ({
-//     game: gameReducer
-//   });
+    case ActionType.MOVE_RIGHT:
+      return state;
 
-// export default reducers
+    case ActionType.MOVE_LEFT:
+      return state;
+
+    case ActionType.MOVE_DOWN:
+      return state;
+
+    case ActionType.RESUME:
+      return state;
+
+    case ActionType.PAUSE:
+      return state;
+
+    case ActionType.GAME_OVER:
+      return state;
+
+    case ActionType.RESTART:
+      return state;
+
+    default:
+      return state;
+  }
+};
+
+export default gameReducer;

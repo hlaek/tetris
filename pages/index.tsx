@@ -5,8 +5,6 @@ import NextBlock from "../components/nextBlock/nextBlock";
 import React, { useState } from "react";
 import { AppContextWrapper } from "../context/state";
 
-const [state] = useState<string>("default");
-
 // Represents a 10 x 18 grid of grid squares
 
 const GridBoard: React.FC = () => {
