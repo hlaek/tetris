@@ -16,17 +16,29 @@ a {
 }
 
 :root {
-  
-  /* Square Colors:  background colors for the squares.*/
-  /* TODO: Incorporate these with enums */
-  --color-0: #eaeaea;
-  --color-1: #ff6600;
-  --color-2: #eec900;
-  --color-3: #0000ff;
-  --color-4: #cc00ff;
-  --color-5: #00ff00;
-  --color-6: #66ccff;
-  --color-7: #ff0000;
+  /* Square Colors:  background colors for the blocks. */
+  --color-0: #fff;
+  --color-1: #ff8a31;
+  --color-2: #e4d164;
+  --color-3: #6000c1;
+  --color-4: #fc7abd;
+  --color-5: #4c8c1e;
+  --color-6: #2695cd;
+  --color-7: #a41c1c;
+
+  /* Border Colors are all transparent colors. These will tint or shade the background color of the square. */
+  --border-left-color: rgba(255, 255, 255, 0.20);
+  --border-top-color: rgba(255, 255, 255, 0.33);
+  --border-right-color: rgba(0, 0, 0, 0.15);
+  --border-bottom-color: rgba(0, 0, 0, 0.5);
+
+  /* Button/Background Colors */
+  --button-color-t: rgba(200, 200, 200, 1);
+  --button-color-r: rgba(150, 150, 150, 1);
+  --button-color-b: rgba(120, 120, 120, 1);
+  --button-color-l: rgba(222, 222, 222, 1);
+  --bg-color-0: rgba(150, 150, 150, 1);
+  --bg-color-1: rgb(0, 0, 0);
 
   /* Numbers define values that will be used throughout the CSS.
   --tile-size: 20px for example will set size of the grid squares. */
@@ -36,4 +48,87 @@ a {
   --border-width: 5px;
   --next-cols: 6;
   --next-rows: 8;
+}
+
+.grid-square {
+  border-style: solid;
+  width: var(--tile-size);
+  height: var(--tile-size);
+  border-width: var(--border-width);
+  border-left-color: var(--border-left-color);
+  border-top-color: var(--border-top-color);
+  border-right-color: var(--border-right-color);
+  border-bottom-color: var(--border-bottom-color);
+}
+
+/* Color classes */
+.color-0 {
+  background-color: var(--color-0); /* White */
+}
+
+.color-1 {
+  background-color: var(--color-1); /* Orange */
+}
+
+.color-2 {
+  background-color: var(--color-2); /* Yellow */
+}
+
+.color-3 {
+  background-color: var(--color-3); /* Purple */
+}
+
+.color-4 {
+  background-color: var(--color-4); /* Pink */
+}
+
+.color-5 {
+  background-color: var(--color-5); /* Green */
+}
+
+.color-6 {
+  background-color: var(--color-6); /* Blue */
+}
+
+.color-7 {
+  background-color: var(--color-7); /* Red */
+}
+
+.border-left-color {
+  background-color: var(--border-left-color); /* 20% opacity Gray */
+}
+
+.border-top-color {
+  background-color: var(--border-top-color); /* 33% opacity Gray */
+}
+
+.border-right-color {
+  background-color: var(--border-right-color); /* 15% opacity Black */
+}
+
+.border-bottom-color {
+  background-color: var(--border-bottom-color); /* 50% opacity Black */
+}
+
+.bg-color-0 {
+  background-color: var(--bg-color-0); /* 100% opacity Gray */
+}
+
+.bg-color-1 {
+  background-color: var(--bg-color-1); /* 100% opacity Black */
+}
+
+.button-color-t {
+  background-color: var(--button-color-t); /* 100% opacity Light Gray */
+}
+
+.button-color-r {
+  background-color: var(--button-color-r); /* 100% opacity Mid Gray */
+}
+.button-color-b {
+  background-color: var(--button-color-b); /* 100% opacity Dark Gray */
+}
+
+.button-color-l {
+  background-color: var(--button-color-l); /* 100% opacity Off-White */
 }
