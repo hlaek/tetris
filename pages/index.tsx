@@ -4,6 +4,8 @@ import Block from "../components/block/block";
 import NextBlock from "../components/nextBlock/nextBlock";
 import React, { useContext } from "react";
 import { AppContext, AppContextWrapper } from "../context/state";
+import ScoreBoard from "../components/scoreBoard/scoreBoard";
+import Controls from "../components/Controls";
 
 // Represents a 10 x 18 grid of grid squares
 
@@ -28,7 +30,7 @@ export default function Home() {
   return (
     <AppContextWrapper>
       <div className={styles.container}>
-        <Head></Head>
+        <Head children={undefined}></Head>
         <header className={styles.header}>
           <h2>Tetris</h2>
         </header>
@@ -36,6 +38,8 @@ export default function Home() {
         <main className={styles.main}>
           <GridBoard />
           <NextBlock />
+          <ScoreBoard />
+          <Controls />
         </main>
       </div>
     </AppContextWrapper>
