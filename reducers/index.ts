@@ -4,7 +4,7 @@ import { StateInterface } from "../context/state";
 export const gameReducer = (state: StateInterface, action: Action) => {
   switch (action.type) {
     case ActionType.ROTATE:
-      return state;
+      return { ...state, rotation: +90 };
 
     case ActionType.MOVE_RIGHT:
       return state;

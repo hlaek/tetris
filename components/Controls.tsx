@@ -1,43 +1,29 @@
-import React, {MouseEvent} from 'react';
-import { moveDown, moveLeft, moveRight, rotate } from '../actions';
+import React, {ButtonHTMLAttributes, MouseEvent, useContext, useReducer} from 'react';
+import { ActionType, moveDown, moveLeft, moveRight, rotate } from '../actions';
+import gameReducer from '../reducers';
+import { AppContext } from '../context/state';
 
-interface ControlsProps {
-  id?: string;
-}
 
 export default function Controls() {
+  const { dispatch } = useContext(AppContext);
 
-  const handleMouseEvent = (e: MouseEvent<HTMLButtonElement>, id: ControlsProps) => {
-    e.preventDefault();
-
-    switch (id) {
-      case "left":
-        return moveLeft();
-
-      case "right":
-        return moveRight();
-
-      case "rotate":
-        return rotate();
-
-      case "down":
-        return moveDown();
-    }
-  };
+  const handleSubmitEvent = (eventTargetValue: MouseEvent) => {
+    dispatch({type: eventTargetValue.currentTarget.id})
+  }
 
   return (
     <div className="controls">
       {/* left */}
-      <button className="control-button" id="left" onClick={(handleMouseEvent())}>Left</button>
+      <button className="control-button" id={ActionType.MOVE_LEFT} onClick={handleSubmitEvent}>Left</button>
 
       {/* right */}
-      <button className="control-button" id="right" onClick={(handleMouseEvent())}>Right</button>
+      <button className="control-button" id={ActionType.MOVE_RIGHT} onClick={handleSubmitEvent}>Right</button>
 
       {/* rotate */}
-      <button className="control-button" id="rotate" onClick={(handleMouseEvent())}>Rotate</button>
+      <button className="control-button" id={ActionType.ROTATE} onClick={handleSubmitEvent}>Rotate</button>
 
       {/* down */}
-      <button className="control-button" id="down" onClick={(handleMouseEvent())}>Down</button>
+      <button className="control-button" id={ActionType.MOVE_DOWN} onClick={handleSubmitEvent}>Down</button>
     </div>
   )
 }
