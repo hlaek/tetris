@@ -5,13 +5,9 @@ import NextBlock from "../components/nextBlock/nextBlock";
 import React, { useContext } from "react";
 import { AppContext, AppContextWrapper } from "../context/state";
 import ScoreBoard from "../components/scoreBoard/scoreBoard";
-<<<<<<< HEAD
 import Controls from "../components/Controls";
-=======
->>>>>>> main
 
 // Represents a 10 x 18 grid of grid squares
-
 const GridBoard: React.FC = () => {
   const game = useContext(AppContext).state;
   const { grid, shape, rotation, x, y, isRunning, speed } = game;
@@ -29,6 +25,7 @@ const GridBoard: React.FC = () => {
   return <div className={styles.gridBoard}>{gridBoardArray}</div>;
 };
 
+// Actual component to display on index
 export default function Home() {
   return (
     <AppContextWrapper>
