@@ -21,7 +21,7 @@ const GridBoard: React.FC = () => {
     }
   }
 
-  // The components generated in makeGrid are rendered in div.grid-board
+  // The components generated in makeGrid are rendered in div.gridBoard
   return <div className={styles.gridBoard}>{gridBoardArray}</div>;
 };
 
