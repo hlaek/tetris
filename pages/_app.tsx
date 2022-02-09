@@ -1,5 +1,4 @@
-import '../styles/globals.css';
-import styles from './_app.module.scss';
+import "../styles/globals.css";
 
 interface AppProps {
   Component: React.ReactElement | any;
@@ -7,7 +6,7 @@ interface AppProps {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return <Component {...pageProps} />;
 }
 
-export default MyApp
+export default MyApp;

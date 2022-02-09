@@ -1,42 +1,31 @@
 .container {
   padding: 0 2rem;
-  display: block;
+  //width of app (tile size x (amount of tiles/columns + grid gap))
+  width: calc(var(--tile-size) * (4 + 1 + 10 + 1 + 4));
   margin: auto;
+  display: grid;
+
+  grid-gap: var(--tile-size) var(--tile-size);
+  /* Defines three columns of `--col-side`, `--col-center`, and `--col-side` widths. */
+  grid-template-columns: var(--col-side) var(--col-center) var(--col-side);
+  /* Defines three rows of `100px`, `--grid-height`, and 100px. */
+  grid-template-rows: 100px var(--grid-height) 100px;
+
+  /* This defines the areas on the grid with names: 'h', 'l', 'c', 'r',
+and 'b'. The '.' represents an empty cell on the grid. */
+  grid-template-areas: "h h h"
+                        "l c r"
+                        ". b .";
+
+  &__header {
+    grid-area: h;
+  }
 }
 
-.main, .header{
-  margin: auto;
-  display: flex;
-  justify-content: center;
-}
-
-.gridBoard{
+.gridBoard {
   display: grid;
   grid-template-columns: repeat(var(--cols), var(--tile-size));
   grid-gap: 0;
   align-self: flex-start;
-}
-
- .nextBlockGridBoard {
-  display: grid;
-  grid-template-columns: repeat(var(--next-cols), var(--tile-size));
-  grid-gap: 0;
-  align-self: flex-start;
-}
-
-
-.footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
+  grid-area: c; /* Assign to grid area c */
 }
