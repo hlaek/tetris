@@ -1,5 +1,4 @@
 .container {
-  padding: 0 2rem;
   //width of app (tile size x (amount of tiles/columns + grid gap))
   width: calc(var(--tile-size) * (4 + 1 + 10 + 1 + 4));
   margin: auto;
