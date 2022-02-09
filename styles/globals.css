@@ -144,12 +144,13 @@ a {
   grid-area: b;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.control-button {
+.control__button {
   --size: calc(var(--tile-size) * 2.5); 
-  width: var(--size);
-  height: var(--size);
+  min-width: 90px;
   text-align: center;  
   display: block;
   border-width: 5px;
