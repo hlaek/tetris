@@ -6,7 +6,7 @@ import { AppContext } from "../../context/state";
 
 // Draws the "next" block view showing the next block to drop
 const NextBlock = () => {
-  const { state, dispatch } = useContext(AppContext);
+  const { state } = useContext(AppContext);
 
   const nextShape = state.nextShape;
   const box = shapes[nextShape][0]; // Get the first rotation

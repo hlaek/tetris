@@ -1,5 +1,5 @@
-import React, {ButtonHTMLAttributes, MouseEvent, useContext, useReducer} from 'react';
-import { ActionType, moveDown, moveLeft, moveRight, rotate } from '../actions/actions';
+import React, { MouseEvent, useContext } from 'react';
+import { ActionType } from '../actions/actions';
 import { AppContext } from '../context/state';
 
 export default function Controls() {

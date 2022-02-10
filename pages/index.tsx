@@ -59,7 +59,7 @@ export default function Home() {
         <GridBoard />
         <NextBlock />
         <ScoreBoard />
-        <MessagePopup hidden />
+        <MessagePopup />
         <Controls />
       </div>
     </AppContextWrapper>

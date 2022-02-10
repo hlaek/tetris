@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../context/state";
 import styles from "./messagePopUp.module.scss";
 
-interface MessagePopUpInterface {
-  hidden: boolean;
-}
-
 // Displays a message
-const MessagePopup: React.FC<MessagePopUpInterface> = ({ hidden }) => {
+const MessagePopup: React.FC = () => {
+  const [showMessage, setShowMessage] = useState(false);
+  const isRunning = useContext(AppContext).state.isRunning;
+  const isGameOver = useContext(AppContext).state.gameOver;
+
+  useEffect(() => {
+    setShowMessage(!isRunning || isGameOver) 
+  }, []);
+
+  const message = isGameOver ? 'GAME OVER!' : 'Game Paused';
+
   return (
-    <div className={`${styles.messagePopup} ${hidden && styles.hidden}`}>
-      <h1>Message Title</h1>
-      <p>Message info...</p>
+    <div className={`${styles.messagePopup} ${!showMessage && styles.hidden}`}>
+      <h1>{message}</h1>
     </div>
   );
 };
