@@ -1,5 +1,6 @@
 .scoreBoard {
   grid-area: r;
+  grid-template-columns: repeat(4, var(--tile-size));
 
   &__button {
     display: block;

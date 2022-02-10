@@ -5,7 +5,7 @@ import NextBlock from "../components/nextBlock/nextBlock";
 import React, { useContext } from "react";
 import { AppContext, AppContextWrapper } from "../context/state";
 import ScoreBoard from "../components/scoreBoard/scoreBoard";
-import Controls from "../components/Controls";
+import MessagePopup from "../components/messagePopUp/messagePopUp";
 
 // Represents a 10 x 18 grid of grid squares
 const GridBoard: React.FC = () => {
@@ -37,7 +37,7 @@ export default function Home() {
         <GridBoard />
         <NextBlock />
         <ScoreBoard />
-        <Controls />
+        <MessagePopup hidden />
       </div>
     </AppContextWrapper>
   );
