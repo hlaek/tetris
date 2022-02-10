@@ -3,16 +3,15 @@ export const random = (min: number, max: number) => {
 };
 
 //grid arrays/shapes
-export const gridDefault = (): number[] | number[][] => {
+export const gridDefault = (): number[][] => {
   const rows = 18;
   const cols = 10;
   var array = [];
-  const emptyArray: number[] = [];
 
   // Fill array with 18 arrays each containing
   // 10 zeros (0)
   for (let row = 0; row < rows; row++) {
-    array.push(emptyArray);
+    array.push([] as number[]);
     for (let col = 0; col < cols; col++) {
       array[row].push(0);
     }

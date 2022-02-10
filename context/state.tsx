@@ -5,7 +5,7 @@ import gameReducer from "../reducers";
 import { gridDefault, randomShape } from "../utils";
 
 export type StateInterface = {
-  grid: number[] | number[][]; //(Array) nested array describing the game board
+  grid: number[][]; //(Array) nested array describing the game board
   shape: number; //Int) index of current shape block controlled by player
   rotation: number; //(Int) rotation index of the current shape block
   x: number; //(Int) horizontal position of the current shape block on the game board

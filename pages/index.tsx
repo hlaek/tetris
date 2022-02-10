@@ -6,23 +6,44 @@ import React, { useContext } from "react";
 import { AppContext, AppContextWrapper } from "../context/state";
 import ScoreBoard from "../components/scoreBoard/scoreBoard";
 import Controls from "../components/Controls";
+import { shapes } from "../utils";
 
 // Represents a 10 x 18 grid of grid squares
 const GridBoard: React.FC = () => {
   const game = useContext(AppContext).state;
   const { grid, shape, rotation, x, y, isRunning, speed } = game;
 
-  // generates an array of 18 rows, each containing 10 GridSquares.
-  const gridBoardArray: any[] = [];
-  for (let row = 0; row < 18; row++) {
-    gridBoardArray.push([]);
-    for (let col = 0; col < 10; col++) {
-      gridBoardArray[row].push(<Block key={`${col}${row}`} color={0} />);
-    }
-  }
+  const block = shapes[shape][rotation];
+  const blockColor = shape;
+
+  // map rows
+  const gridSquares = grid.map((rowArray, row) => {
+    // map columns
+    return rowArray.map((square, col) => {
+      // Find the block x and y on the shape grid
+      // By subtracting the x and y from the col and the row we get the position of the upper left corner of the block array as if it was superimposed over the main grid
+      const blockX = col - x;
+      const blockY = row - y;
+      let color = square;
+      // Map current falling block to grid.
+      // For any squares that fall on the grid we need to look at the block array and see if there is a 1 in this case we use the block color.
+      if (
+        blockX >= 0 &&
+        blockX < block.length &&
+        blockY >= 0 &&
+        blockY < block.length
+      ) {
+        color = block[blockY][blockX] === 0 ? color : blockColor;
+      }
+      //Generate a unique key for every block
+      const k = row;
+      //Generate a grid square
+      return <Block key={k} color={color} />;
+    });
+  });
 
   // The components generated in makeGrid are rendered in div.gridBoard
-  return <div className={styles.gridBoard}>{gridBoardArray}</div>;
+  return <div className={styles.gridBoard}>{gridSquares}</div>;
 };
 
 // Actual component to display on index
