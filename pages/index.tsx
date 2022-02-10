@@ -5,8 +5,8 @@ import NextBlock from "../components/nextBlock/nextBlock";
 import React, { useContext } from "react";
 import { AppContext, AppContextWrapper } from "../context/state";
 import ScoreBoard from "../components/scoreBoard/scoreBoard";
-import Controls from "../components/Controls";
-import { shapes } from "../utils";
+import Controls from "../controls/Controls";
+import { shapes } from "../utils/helpers";
 import MessagePopup from "../components/messagePopUp/messagePopUp";
 
 // Represents a 10 x 18 grid of grid squares
@@ -37,7 +37,7 @@ const GridBoard: React.FC = () => {
         color = block[blockY][blockX] === 0 ? color : blockColor;
       }
       //Generate a unique key for every block
-      const k = row;
+      const k = row * grid[0].length + col;
       //Generate a grid square
       return <Block key={k} color={color} />;
     });
@@ -59,7 +59,7 @@ export default function Home() {
         <GridBoard />
         <NextBlock />
         <ScoreBoard />
-        <MessagePopup hidden />
+        <MessagePopup />
         <Controls />
       </div>
     </AppContextWrapper>
