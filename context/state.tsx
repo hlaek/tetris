@@ -1,12 +1,12 @@
 // src/context/state.js
 import React, { useReducer, useState } from "react";
 import { createContext, useContext } from "react";
-import gameReducer from "../reducers";
-import { gridDefault, randomShape } from "../utils";
+import gameReducer from "../reducers/reducers";
+import { gridDefault, randomShape } from "../utils/helpers";
 
 export type StateInterface = {
   grid: number[][]; //(Array) nested array describing the game board
-  shape: number; //Int) index of current shape block controlled by player
+  shape: number; // (Int) index of current shape block controlled by player
   rotation: number; //(Int) rotation index of the current shape block
   x: number; //(Int) horizontal position of the current shape block on the game board
   y: number; //(Int) vertical position of the current shape block
@@ -17,7 +17,7 @@ export type StateInterface = {
   gameOver: boolean; //(Bool) true when game is over
 };
 
-const initialState: StateInterface = {
+export const initialState: StateInterface = {
   // Create an empty grid
   grid: gridDefault(),
   // Get a new random shape

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Block from "../block/block";
 import styles from "./nextBlock.module.scss";
-import { shapes } from "../../utils";
+import { shapes } from "../../utils/helpers";
 import { AppContext } from "../../context/state";
 
 // Draws the "next" block view showing the next block to drop
