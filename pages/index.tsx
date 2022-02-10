@@ -7,6 +7,7 @@ import { AppContext, AppContextWrapper } from "../context/state";
 import ScoreBoard from "../components/scoreBoard/scoreBoard";
 import Controls from "../components/Controls";
 import { shapes } from "../utils";
+import MessagePopup from "../components/messagePopUp/messagePopUp";
 
 // Represents a 10 x 18 grid of grid squares
 const GridBoard: React.FC = () => {
@@ -58,6 +59,7 @@ export default function Home() {
         <GridBoard />
         <NextBlock />
         <ScoreBoard />
+        <MessagePopup hidden />
         <Controls />
       </div>
     </AppContextWrapper>
