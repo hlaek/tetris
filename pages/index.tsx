@@ -8,7 +8,6 @@ import ScoreBoard from "../components/scoreBoard/scoreBoard";
 import MessagePopup from "../components/messagePopUp/messagePopUp";
 
 // Represents a 10 x 18 grid of grid squares
-
 const GridBoard: React.FC = () => {
   const game = useContext(AppContext).state;
   const { grid, shape, rotation, x, y, isRunning, speed } = game;
@@ -22,10 +21,11 @@ const GridBoard: React.FC = () => {
     }
   }
 
-  // The components generated in makeGrid are rendered in div.grid-board
+  // The components generated in makeGrid are rendered in div.gridBoard
   return <div className={styles.gridBoard}>{gridBoardArray}</div>;
 };
 
+// Actual component to display on index
 export default function Home() {
   return (
     <AppContextWrapper>
