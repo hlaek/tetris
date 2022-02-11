@@ -1,4 +1,4 @@
-import React, { MouseEvent, useContext, useEffect } from "react";
+import React, { MouseEvent, useContext, useEffect, useState } from "react";
 import { ActionType } from "../../actions/actions";
 import { AppContext } from "../../context/state";
 import styles from "./controls.module.scss";
@@ -20,7 +20,7 @@ const Controls: React.FC = () => {
   const ControlButton: React.FC<ControlButtonProps> = ({ id, buttonText }) => {
     return (
       <button
-        className={styles.controls__button}
+        className={`${styles.controls__button} active ?`}
         id={id}
         onClick={handleSubmitEvent}
         disabled={!isRunning}
