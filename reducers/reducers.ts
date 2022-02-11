@@ -10,7 +10,7 @@ import {
 import { initialState } from "../context/state";
 
 export const gameReducer = (
-  state: StateInterface = initialState,
+  state: StateInterface = initialState(),
   action: Action
 ) => {
   const { shape, grid, x, y, rotation, nextShape, score, isRunning } = state;
@@ -60,9 +60,10 @@ export const gameReducer = (
       }
 
       // reset somethings to start a new shape/block
-      const newState = initialState;
+      const newState = initialState();
       newState.grid = newGrid;
       newState.shape = nextShape;
+      newState.nextShape = randomShape();
       newState.score = score;
       newState.isRunning = isRunning;
 
@@ -82,10 +83,10 @@ export const gameReducer = (
       return state;
 
     case ActionType.RESTART:
-      return initialState;
+      return initialState();
 
     default:
-      return initialState;
+      return initialState();
   }
 };
 
