@@ -9,7 +9,6 @@ const NextBlock = () => {
   const { state } = useContext(AppContext);
 
   const nextShape = state.nextShape;
-  console.log(nextShape);
   const box = shapes[nextShape][0]; // Get the first rotation
 
   // Map the block to the grid

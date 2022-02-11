@@ -1,11 +1,14 @@
 import React, { MouseEvent, useContext, useEffect, useState } from "react";
 import { ActionType } from "../../actions/actions";
 import { AppContext } from "../../context/state";
+import gameReducer from "../../reducers/reducers";
 import styles from "./controls.module.scss";
 
 const Controls: React.FC = () => {
   const { dispatch } = useContext(AppContext);
   const isRunning = useContext(AppContext).state.isRunning;
+  const gameOver = useContext(AppContext).state.gameOver;
+
   //control click events
   const handleSubmitEvent = (eventTargetValue: MouseEvent) => {
     dispatch({ type: eventTargetValue.currentTarget.id });
@@ -20,10 +23,10 @@ const Controls: React.FC = () => {
   const ControlButton: React.FC<ControlButtonProps> = ({ id, buttonText }) => {
     return (
       <button
-        className={`${styles.controls__button} active ?`}
+        className={`${styles.controls__button}`}
         id={id}
         onClick={handleSubmitEvent}
-        disabled={!isRunning}
+        disabled={!isRunning || gameOver}
       >
         {buttonText}
       </button>

@@ -2,20 +2,48 @@ import Head from "next/head";
 import styles from "../styles/Home.module.scss";
 import Block from "../components/block/block";
 import NextBlock from "../components/nextBlock/nextBlock";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { AppContext, AppContextWrapper } from "../context/state";
 import ScoreBoard from "../components/scoreBoard/scoreBoard";
 import Controls from "../components/controls/controls";
 import { shapes } from "../utils/helpers";
 import MessagePopup from "../components/messagePopUp/messagePopUp";
+import { ActionType } from "../actions/actions";
 
 // Represents a 10 x 18 grid of grid squares
 const GridBoard: React.FC = () => {
-  const game = useContext(AppContext).state;
-  const { grid, shape, rotation, x, y, isRunning, speed } = game;
+  const { state, dispatch } = useContext(AppContext);
+  const { grid, shape, rotation, x, y, isRunning, speed } = state;
 
   const block = shapes[shape][rotation];
   const blockColor = shape;
+
+  const requestRef = useRef<number>(0);
+  const lastUpdateTimeRef = useRef<number>(0);
+  const progressTimeRef = useRef<number>(0);
+
+  //
+  const update = (time: number) => {
+    requestRef.current = requestAnimationFrame(update);
+    if (!isRunning) {
+      return;
+    }
+    if (!lastUpdateTimeRef.current) {
+      lastUpdateTimeRef.current = time;
+    }
+    const deltaTime = time - lastUpdateTimeRef.current;
+    progressTimeRef.current += deltaTime;
+    if (progressTimeRef.current > speed) {
+      dispatch({ type: ActionType.MOVE_DOWN });
+      progressTimeRef.current = 0;
+    }
+    lastUpdateTimeRef.current = time;
+  };
+
+  useEffect(() => {
+    requestRef.current = requestAnimationFrame(update);
+    return () => cancelAnimationFrame(requestRef.current);
+  }, [isRunning]);
 
   // map rows
   const gridSquares = grid.map((rowArray, row) => {

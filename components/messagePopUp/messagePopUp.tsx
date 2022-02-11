@@ -10,7 +10,7 @@ const MessagePopup: React.FC = () => {
 
   useEffect(() => {
     setShowMessage(!isRunning || isGameOver);
-  }, []);
+  }, [isRunning, isGameOver]);
 
   const message = isGameOver ? "GAME OVER!" : "Game Paused";
 

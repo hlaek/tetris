@@ -1,6 +1,6 @@
 // src/context/state.js
-import React, { useReducer, useState } from "react";
-import { createContext, useContext } from "react";
+import React, { useReducer } from "react";
+import { createContext } from "react";
 import gameReducer from "../reducers/reducers";
 import { gridDefault, randomShape } from "../utils/helpers";
 
