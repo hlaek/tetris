@@ -1,0 +1,20 @@
+/* Controls Wrapper and Control Buttons */
+.controls {
+    grid-area: b;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  
+    &__button {
+        --size: calc(var(--tile-size) * 2.5); 
+        min-width: 90px;
+        text-align: center;  
+        display: block;
+        border-width: 5px;
+        border-top-color: var(--button-color-t);
+        border-left-color: var(--button-color-l);
+        border-right-color: var(--button-color-r);
+        border-bottom-color: var(--button-color-b);
+    }
+}

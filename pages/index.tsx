@@ -5,7 +5,7 @@ import NextBlock from "../components/nextBlock/nextBlock";
 import React, { useContext } from "react";
 import { AppContext, AppContextWrapper } from "../context/state";
 import ScoreBoard from "../components/scoreBoard/scoreBoard";
-import Controls from "../controls/Controls";
+import Controls from "../components/controls/controls";
 import { shapes } from "../utils/helpers";
 import MessagePopup from "../components/messagePopUp/messagePopUp";
 
