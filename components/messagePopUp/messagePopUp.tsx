@@ -9,10 +9,10 @@ const MessagePopup: React.FC = () => {
   const isGameOver = useContext(AppContext).state.gameOver;
 
   useEffect(() => {
-    setShowMessage(!isRunning || isGameOver) 
-  }, []);
+    setShowMessage(!isRunning || isGameOver);
+  }, [isRunning, isGameOver]);
 
-  const message = isGameOver ? 'GAME OVER!' : 'Game Paused';
+  const message = isGameOver ? "GAME OVER!" : "Game Paused";
 
   return (
     <div className={`${styles.messagePopup} ${!showMessage && styles.hidden}`}>

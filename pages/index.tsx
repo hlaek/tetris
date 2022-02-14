@@ -2,20 +2,56 @@ import Head from "next/head";
 import styles from "../styles/Home.module.scss";
 import Block from "../components/block/block";
 import NextBlock from "../components/nextBlock/nextBlock";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { AppContext, AppContextWrapper } from "../context/state";
 import ScoreBoard from "../components/scoreBoard/scoreBoard";
-import Controls from "../controls/Controls";
+import Controls from "../components/controls/controls";
 import { shapes } from "../utils/helpers";
 import MessagePopup from "../components/messagePopUp/messagePopUp";
+import { ActionType } from "../actions/actions";
 
 // Represents a 10 x 18 grid of grid squares
 const GridBoard: React.FC = () => {
-  const game = useContext(AppContext).state;
-  const { grid, shape, rotation, x, y, isRunning, speed } = game;
+  const { state, dispatch } = useContext(AppContext);
+  const { grid, shape, rotation, x, y, isRunning, speed } = state;
 
   const block = shapes[shape][rotation];
   const blockColor = shape;
+
+  const requestRef = useRef<number>();
+  const lastUpdateTimeRef = useRef<number>(0);
+  const progressTimeRef = useRef<number>(0);
+
+  // handles updates for repainting via the requestAnimationFrame function
+  const update = (time: number) => {
+    requestRef.current = requestAnimationFrame(update);
+    // return nothing if the game is paused or game is over
+    if (!isRunning) {
+      return;
+    }
+    // track time of the last browser repaint
+    if (!lastUpdateTimeRef.current) {
+      lastUpdateTimeRef.current = time;
+    }
+    // tracks the time of the last browser redraw (deltaTime)
+    const deltaTime = time - lastUpdateTimeRef.current;
+    // calc length of time from now and the last time the browser redrew the window
+    progressTimeRef.current += deltaTime;
+    // run the move down action if the length of time from now the last browser redraw is greater than the speed (set in state)
+    if (progressTimeRef.current > speed) {
+      dispatch({ type: ActionType.MOVE_DOWN });
+      // reset progressTimeRef.current to 0
+      progressTimeRef.current = 0;
+    }
+    // track time of the last browser repaint
+    lastUpdateTimeRef.current = time;
+  };
+
+  // run useEffect anytime isRunning state changes
+  useEffect(() => {
+    requestRef.current = requestAnimationFrame(update);
+    return () => cancelAnimationFrame(requestRef.current as number);
+  }, [isRunning]);
 
   // map rows
   const gridSquares = grid.map((rowArray, row) => {
