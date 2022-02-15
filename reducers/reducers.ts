@@ -13,7 +13,18 @@ export const gameReducer = (
   state: StateInterface = initialState(),
   action: Action
 ) => {
-  const { shape, grid, x, y, rotation, nextShape, score, isRunning } = state;
+  const {
+    shape,
+    grid,
+    x,
+    y,
+    rotation,
+    nextShape,
+    score,
+    isRunning,
+    speed,
+    level,
+  } = state;
 
   switch (action.type) {
     case ActionType.ROTATE:
@@ -70,6 +81,9 @@ export const gameReducer = (
       // TODO: Check and Set level
       // Score increases decrease interval
       newState.score = score + checkRows(newGrid);
+      newState.level = newState.score >= level * 125 ? level + 1 : level;
+      newState.speed = newState.level > level ? speed - 500 : speed;
+      console.log(newState.speed);
 
       return newState;
 
