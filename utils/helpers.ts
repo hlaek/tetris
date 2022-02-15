@@ -142,6 +142,7 @@ export const nextRotation = (shape: number, rotation: number): number => {
   return (rotation + 1) % shapes[shape].length;
 };
 
+// Move a shape to a space if it's available
 export const canMoveTo = (
   shape: number,
   grid: number[][],
@@ -220,7 +221,7 @@ export const addBlockToGrid = (
 export const checkRows = (grid: number[][]) => {
   // Points increase for each row completed
   // i.e. 40 points for completing one row, 100 points for two rows
-  const points = [0, 40, 100, 300, 1200];
+  const points = [0, 10, 20, 30, 40];
   let completedRows = 0;
   for (let row = 0; row < grid.length; row++) {
     // No empty cells means it can't find a 0, so the row must be complete!

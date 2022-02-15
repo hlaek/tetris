@@ -36,7 +36,7 @@ export const initialState = (): StateInterface => {
     // Set the score to 0
     score: 0,
     // Set the default speed
-    speed: 2000,
+    speed: 1500,
     // Game isn't over yet
     gameOver: false,
     // game level
