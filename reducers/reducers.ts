@@ -13,8 +13,51 @@ export const gameReducer = (
   state: StateInterface = initialState(),
   action: Action
 ) => {
-  const { shape, grid, x, y, rotation, nextShape, score, isRunning } = state;
+  const {
+    shape,
+    grid,
+    x,
+    y,
+    rotation,
+    nextShape,
+    score,
+    isRunning,
+    speed,
+    level,
+  } = state;
 
+  const placeBlockCheckScore = (y: number): StateInterface => {
+    // If not place the block
+    // (this returns an object with a grid and gameover bool)
+    const obj = addBlockToGrid(shape, grid, x, y, rotation);
+    const newGrid = obj.grid;
+    const gameOver = obj.gameOver;
+
+    if (gameOver) {
+      // Game Over
+      const newState = { ...state };
+      newState.shape = 0;
+      newState.grid = newGrid;
+      return { ...state, gameOver: true };
+    }
+
+    // reset somethings to start a new shape/block
+    const newState = initialState();
+    newState.grid = newGrid;
+    newState.shape = nextShape;
+    newState.nextShape = randomShape();
+    newState.score = score;
+    newState.isRunning = isRunning;
+
+    // Score increases decrease interval
+    newState.score = score + checkRows(newGrid);
+    newState.level = newState.score >= level * 100 ? level + 1 : level;
+    newState.speed = newState.level > level ? speed - 200 : speed;
+
+    return newState;
+  };
+
+  // handle actions
   switch (action.type) {
     case ActionType.ROTATE:
       const newRotation = nextRotation(shape, rotation);
@@ -35,6 +78,20 @@ export const gameReducer = (
       }
       return state;
 
+    case ActionType.DROP:
+      // Get the next potential Y position
+      let dropY = y + 18;
+      
+      while (!canMoveTo(shape, grid, x, dropY, rotation)) {
+        // continue reducing the y from 22 to 0
+        for(dropY; dropY >= -4; dropY--) {
+          if (canMoveTo(shape, grid, x, dropY, rotation)) {
+            return { ...state, y: dropY };
+          } 
+        }
+      }
+      // return state;
+
     case ActionType.MOVE_DOWN:
       // Get the next potential Y position
       const maybeY = y + 1;
@@ -44,35 +101,8 @@ export const gameReducer = (
         // If so move down don't place the block
         return { ...state, y: maybeY };
       }
-
-      // If not place the block
-      // (this returns an object with a grid and gameover bool)
-      const obj = addBlockToGrid(shape, grid, x, y, rotation);
-      const newGrid = obj.grid;
-      const gameOver = obj.gameOver;
-
-      if (gameOver) {
-        // Game Over
-        const newState = { ...state };
-        newState.shape = 0;
-        newState.grid = newGrid;
-        return { ...state, gameOver: true };
-      }
-
-      // reset somethings to start a new shape/block
-      const newState = initialState();
-      newState.grid = newGrid;
-      newState.shape = nextShape;
-      newState.nextShape = randomShape();
-      newState.score = score;
-      newState.isRunning = isRunning;
-
-      // TODO: Check and Set level
-      // Score increases decrease interval
-      newState.score = score + checkRows(newGrid);
-
-      return newState;
-
+      return placeBlockCheckScore(y);
+      
     case ActionType.RESUME:
       return { ...state, isRunning: true };
 

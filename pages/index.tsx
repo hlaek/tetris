@@ -1,4 +1,3 @@
-import Head from "next/head";
 import styles from "../styles/Home.module.scss";
 import Block from "../components/block/block";
 import NextBlock from "../components/nextBlock/nextBlock";
@@ -51,7 +50,7 @@ const GridBoard: React.FC = () => {
   useEffect(() => {
     requestRef.current = requestAnimationFrame(update);
     return () => cancelAnimationFrame(requestRef.current as number);
-  }, [isRunning]);
+  }, [isRunning, speed]);
 
   // map rows
   const gridSquares = grid.map((rowArray, row) => {

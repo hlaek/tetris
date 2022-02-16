@@ -6,7 +6,8 @@ export enum ActionType {
   ROTATE = "ROTATE", // Rotate piece
   MOVE_DOWN = "MOVE_DOWN", // Move piece down
   GAME_OVER = "GAME_OVER", // The game is over
-  RESTART = "RESTART",
+  RESTART = "RESTART", // Start a new game
+  DROP = "DROP"
 }
 
 export type Action =
@@ -17,4 +18,5 @@ export type Action =
   | { type: ActionType.ROTATE }
   | { type: ActionType.MOVE_DOWN }
   | { type: ActionType.GAME_OVER }
-  | { type: ActionType.RESTART };
+  | { type: ActionType.RESTART }
+  | { type: ActionType.DROP};

@@ -37,23 +37,31 @@ export const Controls: React.FC = () => {
     switch (event.key) {
       // left
       case "Left": // IE/Edge specific value
+      case "a":
       case "ArrowLeft":
         dispatch({ type: ActionType.MOVE_LEFT });
         break;
       // up
       case "Up": // IE/Edge specific value
+      case "w":
       case "ArrowUp":
         dispatch({ type: ActionType.ROTATE });
         break;
       //right
       case "Right": // IE/Edge specific value
+      case "d":
       case "ArrowRight":
         dispatch({ type: ActionType.MOVE_RIGHT });
         break;
       // down
       case "Down": // IE/Edge specific value
+      case "s":
       case "ArrowDown":
         dispatch({ type: ActionType.MOVE_DOWN });
+        break;
+      // drop the piece straight down
+      case " ":
+        dispatch({ type: ActionType.DROP });
         break;
     }
   };
@@ -69,6 +77,7 @@ export const Controls: React.FC = () => {
     <div className={styles.controls}>
       {/* left */}
       <ControlButton id={ActionType.MOVE_LEFT} buttonText="Left" />
+
 
       {/* rotate */}
       <ControlButton id={ActionType.ROTATE} buttonText="Rotate" />

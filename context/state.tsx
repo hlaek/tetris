@@ -15,11 +15,12 @@ export type StateInterface = {
   score: number; //(Int) number of points scored
   speed: number; //(Int) speed of falling blocks
   gameOver: boolean; //(Bool) true when game is over
+  level: number;
 };
 
 export const initialState = (): StateInterface => {
   return {
-      // Create an empty grid
+    // Create an empty grid
     grid: gridDefault(),
     // Get a new random shape
     shape: randomShape(),
@@ -35,10 +36,12 @@ export const initialState = (): StateInterface => {
     // Set the score to 0
     score: 0,
     // Set the default speed
-    speed: 400,
+    speed: 1500,
     // Game isn't over yet
     gameOver: false,
-  }
+    // game level
+    level: 1,
+  };
 };
 
 export const AppContext = createContext<{
